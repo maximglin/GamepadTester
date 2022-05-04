@@ -1,0 +1,156 @@
+﻿<Window x:Class="GamepadTester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GamepadTester"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="870" Loaded="Window_Loaded">
+    <Grid Margin="25">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="200px"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200px"/>
+                <ColumnDefinition Width="400px"/>
+                <ColumnDefinition Width="200px"/>
+            </Grid.ColumnDefinitions>
+
+            <ContentControl Grid.Row="1" Grid.Column="2" FontSize="40" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="1" x:Name="Y">
+                        <Ellipse Fill="#6d2d46" Stroke="#360f20" StrokeThickness="4"/>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#360f20">Y</TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" x:Name="X">
+                        <Ellipse Fill="#6d2d46" Stroke="#360f20" StrokeThickness="4"/>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#360f20">X</TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="1" x:Name="A">
+                        <Ellipse Fill="#6d2d46" Stroke="#360f20" StrokeThickness="4"/>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#360f20">A</TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="3" x:Name="B">
+                        <Ellipse Fill="#6d2d46" Stroke="#360f20" StrokeThickness="4"/>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#360f20">B</TextBlock>
+                    </Grid>
+
+                </Grid>
+            </ContentControl>
+
+            <ContentControl Grid.Row="1" Grid.Column="0" FontSize="40" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <local:DPadButton Grid.Row="0" Grid.Column="1" Margin="0,-20,0,66" Grid.RowSpan="2" x:Name="DUp">
+                        <local:DPadButton.RenderTransform>
+                            <TranslateTransform Y="20"></TranslateTransform>
+                        </local:DPadButton.RenderTransform>
+                    </local:DPadButton>
+                    <local:DPadButton Grid.Column="2" RenderTransformOrigin="0.5, 0.5" Margin="10,57,-10,57" Grid.RowSpan="3" x:Name="DRight">
+                        <local:DPadButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform>
+                                    <RotateTransform.Angle>90</RotateTransform.Angle>
+                                </RotateTransform>
+                                <TranslateTransform X="-20"></TranslateTransform>
+                            </TransformGroup>
+                        </local:DPadButton.RenderTransform>
+                    </local:DPadButton>
+                    <local:DPadButton Grid.Column="0" RenderTransformOrigin="0.5, 0.5" Margin="-9,58,9,58" Grid.RowSpan="3" x:Name="DLeft">
+                        <local:DPadButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform>
+                                    <RotateTransform.Angle>-90</RotateTransform.Angle>
+                                </RotateTransform>
+                                <TranslateTransform X="20"></TranslateTransform>
+                            </TransformGroup>
+                        </local:DPadButton.RenderTransform>
+                    </local:DPadButton>
+                    <local:DPadButton Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.5, 0.5" Margin="0,66,0,-22" Grid.RowSpan="2" x:Name="DDown">
+                        <local:DPadButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform>
+                                    <RotateTransform.Angle>180</RotateTransform.Angle>
+                                </RotateTransform>
+                                <TranslateTransform Y="-20"></TranslateTransform>
+                            </TransformGroup>
+                        </local:DPadButton.RenderTransform>
+                    </local:DPadButton>
+
+                </Grid>
+            </ContentControl>
+
+
+            <Grid Grid.Row="1" Grid.Column="1" Margin="20 10 20 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Margin="45" x:Name="LS">
+                    <Grid.RenderTransform>
+                        <TranslateTransform x:Name="LSTransform"></TranslateTransform>
+                    </Grid.RenderTransform>
+                    <Ellipse Grid.Column="1" Fill="#101520"  Stroke="DarkSlateGray" StrokeThickness="3"/>
+                    <Ellipse Grid.Column="1" Fill="White" Width="5" Height="5"/>
+                </Grid>
+                <Grid Margin="45" x:Name="RS" Grid.Column="1">
+                    <Grid.RenderTransform>
+                        <TranslateTransform x:Name="RSTransform"></TranslateTransform>
+                    </Grid.RenderTransform>
+                    <Ellipse Fill="#101520"  Stroke="DarkSlateGray" StrokeThickness="3"/>
+                    <Ellipse Fill="White" Width="5" Height="5"/>
+                </Grid>
+                
+
+                <Grid Grid.Column="0">
+                    <Ellipse Stroke="LightGray" StrokeThickness="2"></Ellipse>
+                    <Ellipse Stroke="DarkSlateGray" StrokeThickness="1" Margin="45"></Ellipse>
+                    <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
+                    <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" VerticalAlignment="Center" X1="0" X2="1" Y1="0" Y2="0"></Line>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Ellipse Stroke="LightGray" StrokeThickness="2"></Ellipse>
+                    <Ellipse Stroke="DarkSlateGray" StrokeThickness="1" Margin="45"></Ellipse>
+                    <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
+                    <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" VerticalAlignment="Center" X1="0" X2="1" Y1="0" Y2="0"></Line>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+
+
+
+
+
+    </Grid>
+</Window>
