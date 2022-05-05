@@ -37,6 +37,7 @@ namespace GamepadTester
                 controller.ButtonDown += Controller_ButtonDown;
                 controller.ButtonUp += Controller_ButtonUp;
                 controller.StickChanged += Controller_StickChanged;
+                controller.TriggerChanged += Controller_TriggerChanged;
 
                 timer.Tick += (s, e) =>
                 {
@@ -48,6 +49,16 @@ namespace GamepadTester
             {
                 MessageBox.Show("No XInput controllers found!");
             }
+        }
+
+        private void Controller_TriggerChanged(object? sender, TriggerEventArgs e)
+        {
+            var tr = e.Trigger == GamepadTester.Triggers.Left ? this.LT : this.RT;
+
+            tr.ScaleX = e.NewValue;
+
+            var txt = e.Trigger == GamepadTester.Triggers.Left ? this.LTtxt : this.RTtxt;
+            txt.Text = $"{(e.Trigger == GamepadTester.Triggers.Left ? "LT" : "RT")} = {e.NewValue.ToString("f4")}";
         }
 
         private void Controller_StickChanged(object? sender, StickEventArgs e)
@@ -64,6 +75,12 @@ namespace GamepadTester
                 tr.Y = -e.NewValue.Y * margin.Top;
             else
                 tr.Y = -e.NewValue.Y * margin.Bottom;
+
+            var txtX = e.Stick == Stick.Left ? this.LSX : this.RSX;
+            var txtY = e.Stick == Stick.Left ? this.LSY : this.RSY;
+
+            txtX.Text = $"X = {e.NewValue.X.ToString("f4")}";
+            txtY.Text = $"Y = {e.NewValue.Y.ToString("f4")}";
         }
 
         private UIElement? GetControl(Buttons b)
@@ -80,6 +97,10 @@ namespace GamepadTester
                 Buttons.DPadRight => this.DRight,
                 Buttons.LeftThumb => this.LS,
                 Buttons.RightThumb => this.RS,
+                Buttons.LeftShoulder => this.LB,
+                Buttons.RightShoulder => this.RB,
+                Buttons.Start => this.Start,
+                Buttons.Back => this.Select,
 
                 _ => null
             };

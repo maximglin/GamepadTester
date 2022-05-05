@@ -5,22 +5,173 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamepadTester"
         mc:Ignorable="d"
-        Title="GamepadTester" Height="450" Width="870" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="GamepadTester" Height="430" Width="880" Loaded="Window_Loaded" Closing="Window_Closing"
+        ResizeMode="NoResize">
     <Grid Margin="25">
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
+                <RowDefinition MinHeight="80px"/>
                 <RowDefinition Height="200px"/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200px"/>
-                <ColumnDefinition Width="400px"/>
+                <ColumnDefinition Width="410px"/>
                 <ColumnDefinition Width="200px"/>
             </Grid.ColumnDefinitions>
 
-            <ContentControl Grid.Row="1" Grid.Column="2" FontSize="40" FontWeight="Bold">
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Viewbox Stretch="Fill" Margin="35 10">
+                    <Grid>
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                        <local:RoundedCornersPolygon Fill="#2C2C2C" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                            <local:RoundedCornersPolygon.RenderTransform>
+                                <ScaleTransform x:Name="LT">
+                                    <ScaleTransform.ScaleX>0.0</ScaleTransform.ScaleX>
+                                </ScaleTransform>
+                            </local:RoundedCornersPolygon.RenderTransform>
+                        </local:RoundedCornersPolygon>
+                        <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">LT</TextBlock>
+                    </Grid>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Viewbox Stretch="Fill" Margin="35 10">
+                    <Grid>
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                        <local:RoundedCornersPolygon Fill="#2C2C2C" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True"
+                                                     RenderTransformOrigin="1.0 0.0">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                            <local:RoundedCornersPolygon.RenderTransform>
+                                <ScaleTransform x:Name="RT">
+                                    <ScaleTransform.ScaleX>0.0</ScaleTransform.ScaleX>
+                                </ScaleTransform>
+                            </local:RoundedCornersPolygon.RenderTransform>
+                        </local:RoundedCornersPolygon>
+                        <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">RT</TextBlock>
+                    </Grid>
+                </Viewbox>
+            </Grid>
+
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Margin="30 20" x:Name="Start" Grid.Column="0">
+                    <Viewbox Stretch="Fill">
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                    </Viewbox>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="20">Start</TextBlock>
+                </Grid>
+
+                <Grid Margin="30 20" x:Name="Select" Grid.Column="1">
+                    <Viewbox Stretch="Fill">
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                    </Viewbox>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="20">Select</TextBlock>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" LastChildFill="False" Margin="0 0 0 10">
+                    <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" x:Name="LTtxt">LT = 0,0000</TextBlock>
+                    <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" x:Name="RTtxt">RT = 0,0000</TextBlock>
+                </DockPanel>
+                <DockPanel Grid.Row="1" LastChildFill="False" Margin="50 0">
+                    <StackPanel DockPanel.Dock="Left">
+                        <TextBlock>LStick</TextBlock>
+                        <TextBlock x:Name="LSX">X = 0,0000</TextBlock>
+                        <TextBlock x:Name="LSY">Y = 0,0000</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Right">
+                        <TextBlock>RStick</TextBlock>
+                        <TextBlock x:Name="RSX">X = 0,0000</TextBlock>
+                        <TextBlock x:Name="RSY">Y = 0,0000</TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+            
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Viewbox Stretch="Fill" Margin="35 20" x:Name="LB">
+                    <Grid>
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="5"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                        <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">LB</TextBlock>
+                    </Grid>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Viewbox Stretch="Fill" Margin="35 20" x:Name="RB">
+                    <Grid>
+                        <local:RoundedCornersPolygon  Fill="LightGray" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="5"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
+                        </local:RoundedCornersPolygon>
+                        <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">RB</TextBlock>
+                    </Grid>
+                </Viewbox>
+            </Grid>
+            
+            <ContentControl Grid.Row="2" Grid.Column="2" FontSize="40" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -56,7 +207,7 @@
                 </Grid>
             </ContentControl>
 
-            <ContentControl Grid.Row="1" Grid.Column="0" FontSize="40" FontWeight="Bold">
+            <ContentControl Grid.Row="2" Grid.Column="0" FontSize="40" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -109,9 +260,10 @@
             </ContentControl>
 
 
-            <Grid Grid.Row="1" Grid.Column="1" Margin="20 10 20 10">
+            <Grid Grid.Row="2" Grid.Column="1" Margin="20 10 20 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
@@ -122,7 +274,7 @@
                     <Ellipse Grid.Column="1" Fill="#101520"  Stroke="DarkSlateGray" StrokeThickness="3"/>
                     <Ellipse Grid.Column="1" Fill="White" Width="5" Height="5"/>
                 </Grid>
-                <Grid Margin="45" x:Name="RS" Grid.Column="1">
+                <Grid Margin="45" x:Name="RS" Grid.Column="2">
                     <Grid.RenderTransform>
                         <TranslateTransform x:Name="RSTransform"></TranslateTransform>
                     </Grid.RenderTransform>
@@ -137,7 +289,7 @@
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" VerticalAlignment="Center" X1="0" X2="1" Y1="0" Y2="0"></Line>
                 </Grid>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="2">
                     <Ellipse Stroke="LightGray" StrokeThickness="2"></Ellipse>
                     <Ellipse Stroke="DarkSlateGray" StrokeThickness="1" Margin="45"></Ellipse>
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
