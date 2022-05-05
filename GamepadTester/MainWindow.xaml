@@ -32,7 +32,7 @@
                                 <Point X="0" Y="20"></Point>
                             </local:RoundedCornersPolygon.Points>
                         </local:RoundedCornersPolygon>
-                        <local:RoundedCornersPolygon Fill="#2C2C2C" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                        <local:RoundedCornersPolygon Fill="#2C2C2C" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
                             <local:RoundedCornersPolygon.Points>
                                 <Point X="0" Y="0"></Point>
                                 <Point X="20" Y="0"></Point>
@@ -44,6 +44,14 @@
                                     <ScaleTransform.ScaleX>0.0</ScaleTransform.ScaleX>
                                 </ScaleTransform>
                             </local:RoundedCornersPolygon.RenderTransform>
+                        </local:RoundedCornersPolygon>
+                        <local:RoundedCornersPolygon  Fill="Transparent" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
                         </local:RoundedCornersPolygon>
                         <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">LT</TextBlock>
                     </Grid>
@@ -60,7 +68,7 @@
                                 <Point X="0" Y="20"></Point>
                             </local:RoundedCornersPolygon.Points>
                         </local:RoundedCornersPolygon>
-                        <local:RoundedCornersPolygon Fill="#2C2C2C" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True"
+                        <local:RoundedCornersPolygon Fill="#2C2C2C" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True"
                                                      RenderTransformOrigin="1.0 0.0">
                             <local:RoundedCornersPolygon.Points>
                                 <Point X="0" Y="0"></Point>
@@ -73,6 +81,14 @@
                                     <ScaleTransform.ScaleX>0.0</ScaleTransform.ScaleX>
                                 </ScaleTransform>
                             </local:RoundedCornersPolygon.RenderTransform>
+                        </local:RoundedCornersPolygon>
+                        <local:RoundedCornersPolygon  Fill="Transparent" Stroke="Gray" StrokeThickness="1.5" ArcRoundness="5" UseRoundnessPercentage="False" IsClosed="True">
+                            <local:RoundedCornersPolygon.Points>
+                                <Point X="0" Y="0"></Point>
+                                <Point X="20" Y="0"></Point>
+                                <Point X="20" Y="20"></Point>
+                                <Point X="0" Y="20"></Point>
+                            </local:RoundedCornersPolygon.Points>
                         </local:RoundedCornersPolygon>
                         <TextBlock Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8">RT</TextBlock>
                     </Grid>
@@ -133,7 +149,7 @@
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Right">
-                        <TextBlock>RStick</TextBlock>
+                        <TextBlock TextAlignment="Right">RStick</TextBlock>
                         <TextBlock x:Name="RSX">X = 0,0000</TextBlock>
                         <TextBlock x:Name="RSY">Y = 0,0000</TextBlock>
                     </StackPanel>
