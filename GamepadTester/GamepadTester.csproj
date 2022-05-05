@@ -5,7 +5,12 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>aaa2.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="aaa2.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Icons\" />
