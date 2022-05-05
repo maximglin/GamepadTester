@@ -102,5 +102,11 @@ namespace GamepadTester
 
             control.Effect = new InvertEffect();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(timer.IsEnabled)
+                timer.Stop();
+        }
     }
 }
