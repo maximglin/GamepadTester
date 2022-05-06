@@ -301,12 +301,14 @@
                 
 
                 <Grid Grid.Column="0">
+                    <Rectangle Stroke="LightGray" Margin="45" StrokeThickness="1"></Rectangle>
                     <Ellipse Stroke="LightGray" StrokeThickness="2"></Ellipse>
                     <Ellipse Stroke="DarkSlateGray" StrokeThickness="1" Margin="45"></Ellipse>
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" VerticalAlignment="Center" X1="0" X2="1" Y1="0" Y2="0"></Line>
                 </Grid>
                 <Grid Grid.Column="2">
+                    <Rectangle Stroke="LightGray" Margin="45" StrokeThickness="1"></Rectangle>
                     <Ellipse Stroke="LightGray" StrokeThickness="2"></Ellipse>
                     <Ellipse Stroke="DarkSlateGray" StrokeThickness="1" Margin="45"></Ellipse>
                     <Line Stroke="LightGray" StrokeThickness="1" Stretch="Fill" HorizontalAlignment="Center" X1="0" X2="0" Y1="0" Y2="1"></Line>
