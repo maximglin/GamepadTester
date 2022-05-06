@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +34,10 @@ namespace GamepadTester
             try
             {
                 controller = new XboxController();
+
+                
+                
+
 
                 controller.ButtonDown += Controller_ButtonDown;
                 controller.ButtonUp += Controller_ButtonUp;
@@ -128,6 +133,62 @@ namespace GamepadTester
         {
             if(timer.IsEnabled)
                 timer.Stop();
+            if (controller != null)
+                controller.StopVibration();
         }
+
+
+        CancellationTokenSource vibrationCts = new CancellationTokenSource();
+        private async void Button_Click(object sender, RoutedEventArgs e) //left
+        {
+            if (controller == null) return;
+
+            vibrationCts.Cancel();
+            vibrationCts = new CancellationTokenSource();
+
+            await controller.Vibrate(1.0, 0.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e) //sine
+        {
+            if (controller == null) return;
+
+            vibrationCts.Cancel();
+            vibrationCts = new CancellationTokenSource();
+
+            Func<TimeSpan, double> f = t => 0.3 + 0.7 * Math.Sin(2 * t.TotalSeconds) * Math.Sin(2 * t.TotalSeconds);
+            await controller.Vibrate(f, f, new TimeSpan(0, 0, 20), vibrationCts.Token);
+        }
+
+
+        private void Button_Click_2(object sender, RoutedEventArgs e) //stop
+        {
+            if (controller == null) return;
+
+            vibrationCts.Cancel();
+            vibrationCts = new CancellationTokenSource();
+        }
+
+        private async void Button_Click_4(object sender, RoutedEventArgs e) //both
+        {
+            if (controller == null) return;
+
+            vibrationCts.Cancel();
+            vibrationCts = new CancellationTokenSource();
+
+            await controller.Vibrate(1.0, 1.0, new TimeSpan(0, 0, 5), vibrationCts.Token);
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e) //right
+        {
+            if (controller == null) return;
+
+            vibrationCts.Cancel();
+            vibrationCts = new CancellationTokenSource();
+
+            await controller.Vibrate(0.0, 1.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
+        }
+
+        
     }
 }

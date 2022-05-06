@@ -50,6 +50,62 @@ namespace GamepadTester
         short lx = 0, ly = 0, rx = 0, ry = 0;
         byte lt = 0, rt = 0;
 
+        public void StopVibration()
+        {
+            controller.SetVibration(new Vibration()
+            {
+                LeftMotorSpeed = 0,
+                RightMotorSpeed = 0
+            });
+        }
+        public async Task Vibrate(double left, double right, TimeSpan time, CancellationToken token = default)
+        {
+            if (left > 1.0) left = 1.0;
+            if (left < 0.0) left = 0.0;
+            if (right > 1.0) right = 1.0;
+            if (right < 0.0) right = 0.0;
+            ushort l = (ushort)Math.Round(ushort.MaxValue * left);
+            ushort r = (ushort)Math.Round(ushort.MaxValue * right);
+
+            controller.SetVibration(new Vibration()
+            {
+                LeftMotorSpeed = l,
+                RightMotorSpeed = r
+            });
+            try { await Task.Delay(time, token); } catch { }
+            controller.SetVibration(new Vibration()
+            {
+                LeftMotorSpeed = 0,
+                RightMotorSpeed = 0
+            });
+        }
+        public async Task Vibrate(Func<TimeSpan, double> left, Func<TimeSpan, double> right, TimeSpan max, CancellationToken token = default)
+        {
+            var start = DateTime.Now;
+            var end = start + max;
+            var now = start;
+
+            while (now < end)
+            {
+                ushort l = (ushort)Math.Round(ushort.MaxValue * left(now - start));
+                ushort r = (ushort)Math.Round(ushort.MaxValue * right(now - start));
+                controller.SetVibration(new Vibration()
+                {
+                    LeftMotorSpeed = l,
+                    RightMotorSpeed = r
+                });
+                now = DateTime.Now;
+                try { await Task.Delay(1, token); } catch {}
+                if (token.IsCancellationRequested)
+                    break;
+            }
+            controller.SetVibration(new Vibration()
+            {
+                LeftMotorSpeed = 0,
+                RightMotorSpeed = 0
+            });
+        }
+
         public void PollOnce()
         {
             var state = controller.GetState();
