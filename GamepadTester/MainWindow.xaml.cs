@@ -137,16 +137,17 @@ namespace GamepadTester
                 controller.StopVibration();
         }
 
-
+        Task vibrationTask = Task.CompletedTask;
         CancellationTokenSource vibrationCts = new CancellationTokenSource();
         private async void Button_Click(object sender, RoutedEventArgs e) //left
         {
             if (controller == null) return;
 
             vibrationCts.Cancel();
+            await vibrationTask;
             vibrationCts = new CancellationTokenSource();
 
-            await controller.Vibrate(1.0, 0.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
+            vibrationTask = controller.Vibrate(1.0, 0.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e) //sine
@@ -154,18 +155,20 @@ namespace GamepadTester
             if (controller == null) return;
 
             vibrationCts.Cancel();
+            await vibrationTask;
             vibrationCts = new CancellationTokenSource();
 
             Func<TimeSpan, double> f = t => 0.3 + 0.7 * Math.Sin(2 * t.TotalSeconds) * Math.Sin(2 * t.TotalSeconds);
-            await controller.Vibrate(f, f, new TimeSpan(0, 0, 20), vibrationCts.Token);
+            vibrationTask = controller.Vibrate(f, f, new TimeSpan(0, 0, 20), vibrationCts.Token);
         }
 
 
-        private void Button_Click_2(object sender, RoutedEventArgs e) //stop
+        private async void Button_Click_2(object sender, RoutedEventArgs e) //stop
         {
             if (controller == null) return;
 
             vibrationCts.Cancel();
+            await vibrationTask;
             vibrationCts = new CancellationTokenSource();
         }
 
@@ -174,9 +177,10 @@ namespace GamepadTester
             if (controller == null) return;
 
             vibrationCts.Cancel();
+            await vibrationTask;
             vibrationCts = new CancellationTokenSource();
 
-            await controller.Vibrate(1.0, 1.0, new TimeSpan(0, 0, 5), vibrationCts.Token);
+            vibrationTask = controller.Vibrate(1.0, 1.0, new TimeSpan(0, 0, 5), vibrationCts.Token);
         }
 
         private async void Button_Click_3(object sender, RoutedEventArgs e) //right
@@ -184,9 +188,10 @@ namespace GamepadTester
             if (controller == null) return;
 
             vibrationCts.Cancel();
+            await vibrationTask;
             vibrationCts = new CancellationTokenSource();
 
-            await controller.Vibrate(0.0, 1.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
+            vibrationTask = controller.Vibrate(0.0, 1.0, new TimeSpan(0, 0, 4), vibrationCts.Token);
         }
 
         
